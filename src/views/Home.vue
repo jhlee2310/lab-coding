@@ -1,18 +1,29 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="home">
+    
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import * as THREE from 'three'
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld,
+  components: {},
+  mounted(){    
+    window.THREE = THREE;
+    let SCENE = new THREE.Scene();  
+    let camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    let renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.querySelector('#home').appendChild( renderer.domElement );
   },
 };
 </script>
+<style lang="scss">
+  #home{
+    canvas{
+      display:block
+    }
+  }
+</style>
